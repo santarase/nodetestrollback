@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: nodeapp-deployment
   labels:
-    app: nodeapp
+    app: nodetestrollback
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodeapp
+      app: nodetestrollback
   template:
     metadata:
       labels:
-        app: nodeapp 
+        app: nodetestrollback
     spec:
       containers:
       - name: nodeserver
-        image: thetips4you/nodeapp:latest
+        image: sanjaytarase/nodetestrollback:latest
         ports:
         - containerPort: 3000
         
@@ -29,10 +29,10 @@ metadata:
   name: nodeapp-service
 spec:
   selector:
-    app: nodeapp 
+    app: nodetestrollback
   type: LoadBalancer
   ports:
   - protocol: TCP
     port: 5000
     targetPort: 3000
-    nodePort: 31110
+    nodePort: 31111
